@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Sanam</title>
+  <style>
+    body {
+      background-color: #f2f2f2; /* light grey background */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: flex-start;
+    }
+  
+    .contact-container {
+      background-color: #dbeeff; /* light blue inner section */
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      max-width: 500px;
+      width: 90%;
+      margin-top: 5rem;
+    }
+  
+    h2 {
+      text-align: center;
+      color: #134e4a;
+    }
+  
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+      color: #333;
+    }
+  
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+  
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+  
+    button {
+      background-color: #1f4f40;
+      color: white;
+      font-weight: bold;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      cursor: pointer;
+    }
+  
+    .back-link {
+      display: block;
+      margin-top: 1rem;
+      text-align: center;
+      color: #0c3c3c;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #444;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="contact-container">
+    <h2>📬 Contact Sanam</h2>
+    <p><strong>Email:</strong> test@gmail.com</p>
+    <p><strong>Phone:</strong> 000-000-0000</p>
+
+    <label for="name">Your Name</label>
+    <input type="text" id="name" placeholder="Enter your name" />
+
+    <label for="message">Your Message</label>
+    <textarea id="message" placeholder="Write your message..."></textarea>
+
+    <button>Send Message</button>
+
+    <a href="index.html" class="back-link">← Back to Menu</a>
+  </div>
+
+  <footer>© 2025 Sanam. All rights reserved.</footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!-- inventory.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Inventory</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="inventory.css">
+</head>
+<body>
+  <nav class="top-nav">
+    <a href="index.html">Home</a>
+    <a href="inventory.html" class="active">Inventory</a>
+    <a href="sickfood.html">Sick Foods</a>
+  </nav>
+
+  <header>
+    <h1>📦 My Inventory</h1>
+    <a href="index.html" class="back-link-inline">🏠 Back to Main Page</a>
+  </header>
+
+  <main class="container">
+    <section class="inventory-card">
+      <p class="inventory-description">
+        🍳 <strong>Inventory Helper:</strong> Add ingredients with quantity and unit to stay organized and get personalized meal suggestions below.
+      </p>
+
+      <div class="inventory-inputs">
+        <input type="text" id="inventory-input" placeholder="Item name (e.g., eggs)" />
+        <input type="number" id="inventory-quantity" placeholder="Qty" min="1" value="1" />
+        <input type="text" id="inventory-unit" placeholder="Unit (e.g., pcs, liter, cup)" />
+        <button id="add-inventory-btn">Add</button>
+      </div>
+
+      <div class="inventory-header">
+        <span class="item-col">📝 Item</span>
+        <span class="qty-col">Qty</span>
+        <span class="unit-col">Unit</span>
+        <span class="action-col">Actions</span>
+      </div>
+      <ul id="inventory-list"></ul>
+
+      <div class="inventory-actions">
+        <button id="clear-inventory-btn">🧹 Clear All</button>
+        <button id="export-inventory-btn">📥 Export CSV</button>
+        <button id="print-inventory-btn">🖨 Print</button>
+      </div>
+    </section>
+
+    <section id="suggested-meals-section" class="suggested-meals">
+      <h2>🍽️ Suggested Meals from Your Inventory</h2>
+      <ul id="suggestedMeals"></ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

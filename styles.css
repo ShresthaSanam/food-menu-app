@@ -1,0 +1,766 @@
+nav.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+}
+
+nav.top-nav a {
+  background-color: #e0f4fc;
+  color: #1f3c2e;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+nav.top-nav a:hover {
+  background-color: #b9e4f5;
+  color: #14452f;
+  transform: scale(1.05);
+}
+
+nav.top-nav a.active {
+  background-color: #b4e0ee;
+  color: #14452f;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fdf6ec;
+  margin: 0;
+  padding: 2rem;
+  color: #1f3c2e;
+}
+h1 {
+  font-size: 2rem;
+  color: #14452f;
+  margin-bottom: 0.5rem;
+}
+.tagline {
+  font-size: 1rem;
+  color: #2c4633;
+  margin-bottom: 2rem;
+}
+button {
+  font-size: 0.9rem;
+  border: none;
+  padding: 6px 12px;
+  margin: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#darkModeToggle {
+  background-color: #2e5d48;
+  color: white;
+  font-weight: bold;
+}
+input[type="text"] {
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 2rem;
+}
+section {
+  margin-bottom: 2rem;
+}
+h2 {
+  color: #14452f;
+}
+ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+li {
+  margin-bottom: 0.5rem;
+}
+.ingredients {
+  margin-left: 1rem;
+}
+.ingredients.hidden {
+  display: none;
+}
+.add-grocery {
+  background-color: #a8d5ba;
+  border: none;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 6px;
+  font-weight: bold;
+  color: #1f3c2e;
+}
+#grocery-list {
+  background-color: #fff7e8;
+  border: 2px dashed orange;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+#grocery-list h2 {
+  color: #c94c1f;
+  margin-bottom: 1rem;
+}
+#groceryItems h4 {
+  margin-top: 1rem;
+  color: #14452f;
+}
+#groceryItems li {
+  padding: 0.25rem 0;
+  display: flex;
+  align-items: center;
+}
+#groceryItems li input[type="checkbox"] {
+  margin-right: 8px;
+}
+#groceryItems li button {
+  background: none;
+  border: none;
+  margin-left: 10px;
+  font-size: 1rem;
+}
+#clearList, #exportList {
+  background-color: #e4572e;
+  color: white;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+.dark-mode a {
+  color: #ffcc70;
+}
+.dark-mode .ingredients {
+  border-left: 2px dashed #aaa;
+}
+
+
+
+/* code enhancements */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+
+/* Smooth dropdown animation for ingredients */
+.ingredients {
+  overflow: hidden;
+  max-height: 1000px;
+  padding-top: 0.5rem;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.has-ingredients:not(.expanded) .ingredients {
+  max-height: 0;
+  padding-top: 0;
+}
+
+/* Dropdown icon styling */
+.dropdown-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  margin-right: 6px;
+}
+
+/* Rotate the arrow when expanded */
+.has-ingredients.expanded .dropdown-icon {
+  transform: rotate(90deg); /* ▶️ becomes 🔽 */
+}
+
+/* Hover animation for expandable food items */
+.has-ingredients {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.has-ingredients:hover {
+  background-color: #f0f8f4; /* soft green tint */
+  transform: scale(1.02);    /* gentle zoom */
+  cursor: pointer;
+}
+
+/* 📱 Mobile responsiveness */
+@media screen and (max-width: 600px) {
+  body {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  #searchInput {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+
+  .has-ingredients {
+    padding: 0.8rem;
+  }
+
+  button {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  #grocery-list {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  footer, nav, .tagline {
+    text-align: center;
+  }
+}
+
+/* 🍽 Section cards for meal categories */
+main section {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* ✨ Custom font for headings and food names */
+h1, h2, h3, .food-name {
+  font-family: 'Quicksand', sans-serif;
+}
+.dropdown-icon {
+  font-family: 'Quicksand', sans-serif;
+}
+
+#recent-recipes ul {
+  list-style-type: disc; /* use bullet points */
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+#recent-recipes li {
+  margin-bottom: 0.4rem;
+  font-style: italic;
+  color: #444;
+}
+
+#recent-recipes a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+#recent-recipes a:hover {
+  text-decoration: underline;
+  color: #007bff;
+}
+
+#groceryItems h4 {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.editable-item {
+  cursor: pointer;
+}
+
+.edit-input {
+  font-size: 1rem;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: auto;
+  min-width: 150px;
+}
+
+.food-thumb {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.inventory-container {
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+#inventory-input {
+  padding: 0.5rem;
+  width: 70%;
+  margin-right: 10px;
+}
+
+#add-inventory-btn {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+#inventory-list {
+  margin-top: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.inventory-list-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  max-width: 600px;
+}
+
+.remove-inventory {
+  cursor: pointer;
+  color: red;
+}
+
+#inventory-input,
+#inventory-quantity,
+#inventory-unit {
+  padding: 0.5rem;
+  margin-right: 10px;
+  width: auto;
+  max-width: 150px;
+}
+
+#add-inventory-btn {
+  padding: 0.5rem 1rem;
+}
+
+.inventory-list-item button {
+  margin: 0 4px;
+}
+
+#clear-inventory-btn {
+  padding: 0.5rem 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.inventory-header,
+.inventory-list-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 0;
+  max-width: 600px;
+}
+
+.inventory-header {
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+  margin-top: 1rem;
+}
+
+.inventory-list-item {
+  border-bottom: 1px solid #eee;
+}
+
+.low-qty::before {
+  content: "⚠️ ";
+}
+.low-qty {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+#suggestedMeals a {
+  color: inherit;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#suggestedMeals a:hover {
+  color: #007bff;
+}
+
+.hidden {
+  display: none;
+}
+
+#smart-suggestions {
+  border: 2px solid #a8d5ba;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #f8fef9;
+}
+
+#smartSuggestionList li {
+  margin-bottom: 0.6rem;
+}
+
+#toggleSmartSuggestions {
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+#smart-suggestions-box {
+  transition: max-height 0.4s ease;
+  overflow: hidden;
+}
+
+.hidden-box {
+  max-height: 0;
+  padding: 0 !important;
+}
+
+button:focus, a:focus {
+  outline: 2px solid #2e5d48;
+  outline-offset: 2px;
+}
+
+/* .add-missing-btn {
+  background-color: lightgrey;
+  border: none;
+  padding: 6px 10px;
+  margin-top: 4px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+} */
+
+@media print {
+  body {
+    background-color: #fff;
+    color: #000;
+    font-size: 14px;
+    padding: 1rem;
+  }
+
+  header,
+  footer,
+  nav,
+  #darkModeToggle,
+  #add-inventory-btn,
+  #inventory-input,
+  #inventory-quantity,
+  #inventory-unit,
+  #clear-inventory-btn,
+  #export-inventory-btn,
+  .inventory-actions,
+  #print-inventory-btn {
+    display: none !important;
+  }
+
+  #inventory-list {
+    margin-top: 1rem;
+  }
+
+  .inventory-list-item {
+    border: 1px solid #ccc;
+    padding: 6px 0;
+    font-size: 1rem;
+  }
+
+  .item-col,
+  .qty-col,
+  .unit-col {
+    font-weight: bold;
+    display: inline-block;
+    width: 30%;
+  }
+
+  .action-col {
+    display: none;
+  }
+}
+
+.inventory-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+
+.inventory-actions button {
+  background-color: #3498db;
+  color: white;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.inventory-actions button:hover {
+  background-color: #2c80b4;
+}
+
+.contact-section {
+  background-color: #f8fef9;
+  border: 2px dashed #a8d5ba;
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 12px;
+  max-width: 500px;
+  font-size: 1.1rem;
+  color: #1f3c2e;
+}
+
+
+@media screen and (max-width: 600px) {
+  nav.top-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+
+  nav.top-nav a {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 1.3rem;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+  }
+
+  .container,
+  main section,
+  #grocery-list,
+  .inventory-card {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  button,
+  input[type="text"],
+  input[type="number"] {
+    font-size: 0.95rem;
+    padding: 0.5rem;
+  }
+
+  .inventory-inputs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .inventory-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltiptext {
+  visibility: hidden;
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Tooltip positioned below */
+.tooltip.bottom .tooltiptext {
+  top: 120%;
+  bottom: auto;
+}
+
+/* 🌿 Soft Green-Tinted Dark Mode Enhancements */
+.dark-mode {
+  background-color: #111a12;
+  color: #e0f5dc;
+}
+
+.dark-mode main section {
+  background-color: #1a2b1d;
+  color: #e0f5dc;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3 {
+  color: #b8f0a7;
+}
+
+.dark-mode header,
+.dark-mode footer,
+.dark-mode nav.top-nav {
+  background-color: #132516;
+  color: #e0f5dc;
+}
+
+.dark-mode .top-nav a {
+  background-color: #284e31;
+  color: #e0f5dc;
+}
+
+.dark-mode .top-nav a:hover,
+.dark-mode .top-nav a.active {
+  background-color: #356944;
+  color: #ffffff;
+}
+
+.dark-mode .food-thumb {
+  border: 2px solid #4a7d5c;
+}
+
+.dark-mode .add-grocery {
+  background-color: #2d573a;
+  color: #fff;
+}
+
+.dark-mode .add-grocery:hover {
+  background-color: #3b7a50;
+}
+
+/* Tooltip styling in dark mode */
+.dark-mode .tooltip .tooltiptext {
+  background-color: #355d41;
+  color: #fff;
+  border: 1px solid #7fbc95;
+}
+
+/* Grocery list section */
+.dark-mode #grocery-list {
+  background-color: #1f2d23;
+  border-color: #4a7d5c;
+}
+
+.dark-mode #grocery-list h2 {
+  color: #d2ffb9;
+}
+
+.dark-mode #groceryItems li {
+  color: #e0f5dc;
+}
+
+.dark-mode .bookmark-btn {
+  background-color: #2d4635;
+  color: #fff;
+}
+
+.dark-mode .dropdown-icon {
+  color: #c2f2cb;
+}
+
+.dark-mode .tagline {
+  color: #c2e8c9; /* a soft readable mint green */
+}
+
+.dark-mode #groceryItems h4 {
+  color: #c2e8c9;
+}
+
+.toggle-header {
+  background-color: #d6f0fc;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+
+.toggle-header:hover {
+  background-color: #b9e4f5;
+}
+
+
+.toggle-content {
+  margin: 0 0 1rem 1rem;
+  padding-left: 1rem;
+  list-style-type: disc;
+}
+
+.toggle-content.collapsed {
+  display: none;
+}
+
+#custom-grocery {
+  background-color: #f9fff8;
+  border: 2px dashed #a8d5ba;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 2rem auto;
+  max-width: 500px;
+}
+
+#customGroceryForm {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#customGroceryInput {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-width: 200px;
+}
+
+#customGroceryForm button {
+  background-color: #2e5d48;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}

@@ -1,0 +1,158 @@
+/* sickfood.css */
+nav.top-nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 0.75rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav.top-nav a {
+  color: #4c8da3;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 1rem;
+  background-color: #eaf6f9;
+}
+
+nav.top-nav a:hover {
+  background-color: #d2eff9;
+  color: #2b5f70;
+}
+
+nav.top-nav a.active {
+  background-color: #b4e0ee;
+  color: #1b4f5e;
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5; /* light grey outer background */
+    color: #333;
+  }
+  
+  header {
+    background-color: #68a0b0;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  .back-link {
+    display: inline-block;
+    margin: 1rem 0;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4c8da3;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  .back-link:hover {
+    background-color: #3a7487;
+  }
+  
+  .recipe {
+    margin: 2rem 0;
+    background: #fffdf3; /* updated for all recipes */
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .recipe h2 {
+    margin-top: 0;
+  }
+  
+  .recipe img {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .tags {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .collapsible {
+    background-color: #e0f4fc;
+    color: #333;
+    cursor: pointer;
+    padding: 10px 16px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .collapsible:hover {
+    background-color: #c4e9f7;
+  }
+  
+  .collapsible.active {
+    font-weight: bold;
+  }
+  
+  .content {
+    padding: 0 18px;
+    background-color: #f1faff;
+    display: none;
+    border-left: 4px solid #68a0b0;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+  }
+  
+  .content ul, .content ol {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+  }
+  
+  .content li {
+    margin-bottom: 0.5rem;
+  }
+  
+  footer {
+    text-align: center;
+    font-size: 0.9rem;
+    margin: 2rem 0 1rem;
+    color: #777;
+  }
+  

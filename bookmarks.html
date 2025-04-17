@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookmarked Recipes</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>⭐ Your Bookmarked Recipes</h1>
+    <a href="index.html">← Back to Menu</a>
+  </header>
+
+  <main>
+    <ul id="bookmarkList" class="bookmark-list"></ul>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const list = document.getElementById("bookmarkList");
+      const saved = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+
+      if (saved.length === 0) {
+        list.innerHTML = "<li>No favorites yet! Bookmark some from the main page.</li>";
+        return;
+      }
+
+      saved.forEach(name => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = `recipes/${name.toLowerCase().replace(/\s+/g, "")}.html`;
+        link.textContent = name;
+        link.target = "_blank";
+        li.appendChild(link);
+        list.appendChild(li);
+      });
+    });
+  </script>
+</body>
+</html>

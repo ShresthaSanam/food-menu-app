@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanam's Tasty Food Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Welcome to Sanam's Tasty Food Menu! 🍽️</h1>
+    <p class="tagline">Lots of food options to choose from and make your tummy full and happy 😊</p>
+    <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
+  </header> 
+  
+  <nav class="top-nav">
+    <a href="index.html">Home</a>
+    <a href="inventory.html">📅 Inventory</a>
+    <a href="sickfood.html">🚗 Sick Foods</a>
+    <a href="contact.html">📧 Contact</a>
+  </nav> 
+
+  <section id="search-area">
+    <input type="text" id="searchInput" placeholder="Search food..." />
+  </section>
+
+  <main>
+    <section id="smart-suggestions" style="margin-bottom: 2rem;">
+      <h2>🍳 Smart Suggestions Based on Your Inventory</h2>
+  
+      <!-- Optional toggle button to hide/show the box -->
+      <button id="toggleSmartSuggestions" style="margin-bottom: 1rem;">
+        ➖ Hide Suggestions
+      </button>
+  
+      <!-- Box that can be shown/hidden -->
+      <div id="smart-suggestions-box">
+        <label style="display: block; margin-bottom: 1rem;">
+          <input type="checkbox" id="onlyCookableToggle" />
+          Show only meals I can cook now
+        </label>
+  
+        <ul id="smartSuggestionList">
+          <li>Loading suggestions...</li>
+        </ul>
+      </div>
+    </section>
+   
+    <<section id="breakfast">
+      <h2>Breakfast</h2>
+
+      <div class="toggle-section">
+        <button class="toggle-header">🥞 Hearty Mains ▸</button>
+        <ul class="toggle-content">
+          <li class="has-ingredients">
+            <span class="food-name">
+              <img src="images/pancake.jpg" alt="Pan Cake" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Pan Cake
+            </span>
+            <ul class="ingredients">
+              <li><em>Flour</em><span class="tooltip bottom"><button class="add-grocery" data-category="grains">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Eggs</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Maple Syrup</em><span class="tooltip"><button class="add-grocery" data-category="condiments">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+          <li class="suggestable" data-ingredients="eggs, salt, pepper, oil">
+            <img src="images/eggs.jpg" alt="Eggs" class="food-thumb" />
+            <a href="recipes/eggs.html" class="recipe-link">Eggs</a>
+            <button class="bookmark-btn" data-recipe="Eggs">☆</button>
+            <p class="match-result"></p>
+          </li>
+          <li>Roti</li>
+          <li>Avocado</li>
+          <li>Waffles</li>
+        </ul>
+      </div>
+
+      <div class="toggle-section">
+        <button class="toggle-header">🍹 Healthy Drinks ▸</button>
+        <ul class="toggle-content">
+          <li class="has-ingredients">
+            <span class="food-name">
+              <img src="images/smoothie.jpg" alt="Green Smoothie" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Green Smoothie
+            </span>
+            <ul class="ingredients">
+              <li><em>Banana</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Spinach</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Chia Seeds</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+          <li>Tea</li>
+          <li>Coffee</li>
+          <li>Banana Milk</li>
+          <li>Chia Pudding</li>
+          <li>Lassi</li>
+          <li>PB Jelly Sandwich</li>
+        </ul>
+      </div>
+
+      <div class="toggle-section">
+        <button class="toggle-header">🍞 Quick Bites & Breads ▸</button>
+        <ul class="toggle-content">
+          <li>Bagels</li>
+          <li>Gwar Mari</li>
+          <li>Roti</li>
+          <li>Muffin</li>
+          <li>Donuts</li>
+        </ul>
+      </div>
+
+      <div class="toggle-section">
+        <button class="toggle-header">🍩 Sweet Treats ▸</button>
+        <ul class="toggle-content">
+          <li class="suggestable" data-ingredients="oats, milk, banana, maple syrup">
+            <img src="images/oatmeal.jpg" alt="Oatmeal" class="food-thumb" />
+            <a href="recipes/oatmeal.html" class="recipe-link">Oatmeal</a>
+            <button class="bookmark-btn" data-recipe="Oatmeal">☆</button>
+            <p class="match-result"></p>
+          </li>
+          <li>Cake</li>
+        </ul>
+      </div>
+    </section>
+    
+    
+    <section id="lunch-dinner">
+      <h2>Lunch and Dinner</h2>
+
+      <div class="toggle-section">
+        <button class="toggle-header">🍛 Hearty Mains ▸</button>
+        <ul class="toggle-content">
+          <li><a href="recipes/chicken.html" class="recipe-link">Chicken</a> <button class="bookmark-btn" data-recipe="Chicken">☆</button></li>
+          <li><a href="recipes/lentils.html" class="recipe-link">Lentils</a> <button class="bookmark-btn" data-recipe="Lentils">☆</button></li>
+          <li>Dal Bhat</li>
+          <li>Spaghetti</li>
+          <li>Rice</li>
+        </ul>
+      </div>
+
+      <div class="toggle-section">
+        <button class="toggle-header">🥗 Vegetarian Dishes ▸</button>
+        <ul class="toggle-content">
+          <li><a href="recipes/veggies.html" class="recipe-link">Vegetables</a> <button class="bookmark-btn" data-recipe="Vegetables">☆</button></li>
+          <li><a href="recipes/potatoes.html" class="recipe-link">Potatoes</a> <button class="bookmark-btn" data-recipe="Potatoes">☆</button></li>
+          <li>Palaak Paneer</li>
+          <li>Matar Paneer</li>
+          <li>Salad</li>
+          <li>Pakoda</li>
+          <li>Tofu</li>
+          <li>Soyabean</li>
+        </ul>
+      </div>
+
+      <div class="toggle-section">
+        <button class="toggle-header">🍕 Pasta & Pizza ▸</button>
+        <ul class="toggle-content">
+          <li>Alfredo Pasta</li>
+          <li>Mac n Cheese</li>
+          <li>Marinara Pasta</li>
+          <li>Pizza</li>
+        </ul>
+      </div>
+
+      <div class="toggle-section">
+        <button class="toggle-header">🍔 Western & Fast Food ▸</button>
+        <ul class="toggle-content">
+          <li>Burger</li>
+          <li>Wrap/Sandwich</li>
+          <li>Burrito Bowl</li>
+          <li>Tacos</li>
+          <li>Fries</li>
+        </ul>
+      </div>
+
+      <div class="toggle-section">
+        <button class="toggle-header">🌮 Global Favorites ▸</button>
+        <ul class="toggle-content">
+          <li>Chowmein</li>
+          <li>Thukpa</li>
+          <li>Samyang Noodles</li>
+          <li>Chauchau</li>
+          <li>Pho</li>
+          <li>Sushi</li>
+          <li>Falafal</li>
+          <li>Hummus and Naan</li>
+          <li>Airfried Chickpeas</li>
+          <li>Fish</li>
+          <li>Salmon</li>
+          <li>Corn</li>
+        </ul>
+      </div>
+
+      <div class="toggle-section">
+        <button class="toggle-header">🍲 Nepali & South Asian Dishes ▸</button>
+        <ul class="toggle-content">
+          <li>Bara</li>
+          <li>Choila</li>
+          <li>Chatpate</li>
+          <li>Pani Puri</li>
+          <li>Samosa</li>
+          <li>Ghundruk</li>
+          <li>Chuira</li>
+          <li>Sel</li>
+          <li>Haluwa</li>
+          <li>Malpuwa</li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="snacks">
+      <h2>Snacks</h2>
+    
+      <div class="toggle-section">
+        <button class="toggle-header">🍹 Refreshing Drinks ▸</button>
+        <ul class="toggle-content">
+          <li>Peanut Butter Banana Smoothie</li>
+          <li>Lassi</li>
+          <li>Banana Milk</li>
+          <li>Soda</li>
+          <li>Boba</li>
+        </ul>
+      </div>
+    
+      <div class="toggle-section">
+        <button class="toggle-header">🍓 Fresh & Healthy ▸</button>
+        <ul class="toggle-content">
+          <li>Fruits</li>
+          <li>Cucumber</li>
+          <li>Carrots</li>
+          <li>Edamame</li>
+          <li>Nuts</li>
+        </ul>
+      </div>
+    
+      <div class="toggle-section">
+        <button class="toggle-header">🍩 Sweet Treats ▸</button>
+        <ul class="toggle-content">
+          <li>Ice Cream</li>
+          <li>Cake</li>
+          <li>Donuts</li>
+          <li>Muffin</li>
+          <li>Chia Pudding</li>
+        </ul>
+      </div>
+    
+      <div class="toggle-section">
+        <button class="toggle-header">🍟 Salty & Crunchy ▸</button>
+        <ul class="toggle-content">
+          <li>Chips</li>
+          <li>Pop Corn</li>
+          <li>Gwar Mari</li>
+        </ul>
+      </div>
+    </section>   
+  </main>
+
+  <section id="custom-grocery">
+    <h2>Add Your Own Grocery Item 📝</h2>
+    <form id="customGroceryForm">
+      <input type="text" id="customGroceryInput" placeholder="Enter item name (e.g., Ziplock bag)" required />
+      <button type="submit">Add Item</button>
+    </form>
+  </section>
+  
+
+  <section id="grocery-list">
+    <h2>My Grocery List 🛒</h2>
+    <ul id="groceryItems"></ul>
+    <button id="clearList">Clear Grocery List</button>
+    <button id="clearBought">🧼 Clear Bought Items</button>
+    <button id="exportList">🧾 Export Grocery List</button>
+  </section>
+
+  <section id="recent-recipes">
+    <h2>Recently Viewed Recipes 📘</h2>
+    <ul id="recentList"></ul>
+  </section>
+
+  <footer>
+    <p>Copyright © Sanam</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
