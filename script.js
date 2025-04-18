@@ -146,6 +146,8 @@ function addToGroceryList(itemName, category = "other") {
     groceryList.appendChild(categorySection);
   }
 
+  
+
   // Create new grocery item
   const groceryItem = document.createElement("li");
   groceryItem.dataset.name = itemName.toLowerCase();
@@ -692,4 +694,49 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const bookmarkButtons = document.querySelectorAll(".bookmark-btn");
+  const savedBookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+
+  bookmarkButtons.forEach((btn) => {
+    const recipe = btn.getAttribute("data-recipe");
+
+    // Show filled star if already bookmarked
+    if (savedBookmarks.includes(recipe)) {
+      btn.textContent = "⭐";
+    }
+
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // prevents unwanted bubbling like expanding dropdown
+      let bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+
+      if (bookmarks.includes(recipe)) {
+        // Remove bookmark
+        bookmarks = bookmarks.filter((r) => r !== recipe);
+        btn.textContent = "☆";
+        localStorage.setItem("bookmarkedRecipes", JSON.stringify(bookmarks));
+        showToast("❌ Recipe removed from bookmarks");
+      } else {
+        // Add bookmark
+        bookmarks.push(recipe);
+        btn.textContent = "⭐";
+        localStorage.setItem("bookmarkedRecipes", JSON.stringify(bookmarks));
+        showToast("✅ Recipe bookmarked!");
+      }
+    });
+  });
+});
+
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}
 
