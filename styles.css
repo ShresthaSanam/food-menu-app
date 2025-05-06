@@ -788,3 +788,43 @@ button:focus, a:focus {
   opacity: 1;
   bottom: 50px;
 }
+
+.suggestable {
+  transition: opacity 0.3s ease;
+}
+
+
+
+a[data-tooltip] {
+  position: relative;
+}
+
+a[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  background: #222;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  top: 50%;
+  left: 105%;
+  transform: translateY(-50%);
+  white-space: pre-wrap;
+  z-index: 999;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  min-width: 150px;
+  text-align: left;
+}
+
+.recipe-link {
+  text-decoration: none; /* 🚫 Remove underline */
+  color: inherit;         /* ✨ Inherit nice text color */
+  font-weight: bold;      /* ✅ Make it bold if you want */
+}
+
+.recipe-link:hover {
+  text-decoration: underline; /* ✅ Only underline on hover */
+  color: #007bff; /* or a nice blue on hover */
+}
+

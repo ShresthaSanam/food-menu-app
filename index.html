@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,257 +8,1371 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <header>
     <h1>Welcome to Sanam's Tasty Food Menu! 🍽️</h1>
     <p class="tagline">Lots of food options to choose from and make your tummy full and happy 😊</p>
     <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
-  </header> 
-  
+  </header>
+
   <nav class="top-nav">
     <a href="index.html">Home</a>
     <a href="#grocery-list">🛒 Grocery</a>
     <a href="inventory.html">📅 Inventory</a>
     <a href="sickfood.html">🚗 Sick Foods</a>
-    <a href="bookmarks.html">🔖 Bookmarks</a>
+    <a href="favorites.html">🔖 Favorites</a>
     <a href="contact.html">📧 Contact</a>
-  </nav> 
+  </nav>
 
   <section id="search-area">
     <input type="text" id="searchInput" placeholder="Search food..." />
+    <label for="tagFilter">Filter by Tag:</label>
+    <select id="tagFilter">
+      <option value="">All Recipes</option>
+      <option value="vegetarian">🥬 Vegetarian</option>
+      <option value="quick">⏱️ Quick</option>
+      <option value="protein">💪 High Protein</option>
+    </select>
+
   </section>
 
   <main>
     <section id="smart-suggestions" style="margin-bottom: 2rem;">
       <h2>🍳 Smart Suggestions Based on Your Inventory</h2>
-  
+
       <!-- Optional toggle button to hide/show the box -->
       <button id="toggleSmartSuggestions" style="margin-bottom: 1rem;">
         ➖ Hide Suggestions
       </button>
-  
+
       <!-- Box that can be shown/hidden -->
       <div id="smart-suggestions-box">
-        <label style="display: block; margin-bottom: 1rem;">
-          <input type="checkbox" id="onlyCookableToggle" />
-          Show only meals I can cook now
-        </label>
-  
+
         <ul id="smartSuggestionList">
           <li>Loading suggestions...</li>
         </ul>
       </div>
     </section>
-   
-    <<section id="breakfast">
+
+    <section id="breakfast">
       <h2>Breakfast</h2>
 
       <div class="toggle-section">
         <button class="toggle-header">🥞 Hearty Mains ▸</button>
         <ul class="toggle-content">
-          <li class="has-ingredients">
+          <li class="has-ingredients suggestable" data-tags="quick,vegetarian">
             <span class="food-name">
               <img src="images/pancake.jpg" alt="Pan Cake" class="food-thumb" />
-              <span class="dropdown-icon">▶️</span> Pan Cake
+              <span class="dropdown-icon">▶️</span>
+              <a href="recipe.html?id=pancake" class="recipe-link">Pan Cake</a>
+
+
+              <ul class="ingredients">
+                <li><em>Flour</em><span class="tooltip bottom"><button class="add-grocery" data-category="grains">➕
+                      Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+                <li><em>Eggs</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                      Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+                <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                      Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+                <li><em>Maple Syrup</em><span class="tooltip"><button class="add-grocery" data-category="condiments">➕
+                      Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick,protein">
+            <span class="food-name">
+              <img src="images/eggs.jpg" alt="Eggs" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span>
+              <a href="recipes/eggs.html" class="recipe-link">Eggs</a>
+
             </span>
             <ul class="ingredients">
-              <li><em>Flour</em><span class="tooltip bottom"><button class="add-grocery" data-category="grains">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
-              <li><em>Eggs</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
-              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
-              <li><em>Maple Syrup</em><span class="tooltip"><button class="add-grocery" data-category="condiments">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Eggs</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Oil</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
             </ul>
-          </li>
-          <li class="suggestable" data-ingredients="eggs, salt, pepper, oil">
-            <img src="images/eggs.jpg" alt="Eggs" class="food-thumb" />
-            <a href="recipes/eggs.html" class="recipe-link">Eggs</a>
-            <button class="bookmark-btn" data-recipe="Eggs">☆</button>
             <p class="match-result"></p>
           </li>
-          <li>Roti</li>
-          <li>Avocado</li>
-          <li>Waffles</li>
+
+
+
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/roti.jpg" alt="Roti" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Roti
+            </span>
+            <ul class="ingredients">
+              <li><em>Wheat Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Water</em><span class="tooltip"><button class="add-grocery" data-category="other">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Oil</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/avocado.jpg" alt="Avocado" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Avocado
+            </span>
+            <ul class="ingredients">
+              <li><em>Avocado</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Lemon</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick,vegetarian">
+            <span class="food-name">
+              <img src="images/waffles.jpg" alt="Waffles" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Waffles
+            </span>
+            <ul class="ingredients">
+              <li><em>Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Eggs</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Butter</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
 
       <div class="toggle-section">
         <button class="toggle-header">🍹 Healthy Drinks ▸</button>
         <ul class="toggle-content">
-          <li class="has-ingredients">
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
             <span class="food-name">
               <img src="images/smoothie.jpg" alt="Green Smoothie" class="food-thumb" />
               <span class="dropdown-icon">▶️</span> Green Smoothie
             </span>
             <ul class="ingredients">
-              <li><em>Banana</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
-              <li><em>Spinach</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
-              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
-              <li><em>Chia Seeds</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Banana</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Spinach</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Chia Seeds</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
             </ul>
           </li>
-          <li>Tea</li>
-          <li>Coffee</li>
-          <li>Banana Milk</li>
-          <li>Chia Pudding</li>
-          <li>Lassi</li>
-          <li>PB Jelly Sandwich</li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/tea.jpg" alt="Tea" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Tea
+            </span>
+            <ul class="ingredients">
+              <li><em>Tea Leaves</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick">
+            <span class="food-name">
+              <img src="images/coffee.jpg" alt="Coffee" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Coffee
+            </span>
+            <ul class="ingredients">
+              <li><em>Ground Coffee</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick,vegetarian">
+            <span class="food-name">
+              <img src="images/bananamilk.jpg" alt="Banana Milk" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Banana Milk
+            </span>
+            <ul class="ingredients">
+              <li><em>Banana</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Honey (optional)</em><span class="tooltip"><button class="add-grocery"
+                    data-category="condiments">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span>
+              </li>
+            </ul>
+          </li>
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/chiapudding.jpg" alt="Chia Pudding" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Chia Pudding
+            </span>
+            <ul class="ingredients">
+              <li><em>Chia Seeds</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Maple Syrup</em><span class="tooltip"><button class="add-grocery" data-category="condiments">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/pbj.jpg" alt="PB Jelly Sandwich" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> PB Jelly Sandwich
+            </span>
+            <ul class="ingredients">
+              <li><em>Bread</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Peanut Butter</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Jam or Jelly</em><span class="tooltip"><button class="add-grocery" data-category="condiments">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
 
       <div class="toggle-section">
         <button class="toggle-header">🍞 Quick Bites & Breads ▸</button>
         <ul class="toggle-content">
-          <li>Bagels</li>
-          <li>Gwar Mari</li>
-          <li>Roti</li>
-          <li>Muffin</li>
-          <li>Donuts</li>
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/bagels.jpg" alt="Bagels" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Bagels
+            </span>
+            <ul class="ingredients">
+              <li><em>Bagel</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Cream Cheese</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/gwarmari.jpg" alt="Gwar Mari" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Gwar Mari
+            </span>
+            <ul class="ingredients">
+              <li><em>All-Purpose Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Yeast</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Oil</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/roti.jpg" alt="Roti" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Roti
+            </span>
+            <ul class="ingredients">
+              <li><em>Wheat Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Water</em><span class="tooltip"><button class="add-grocery" data-category="other">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Oil</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/muffin.jpg" alt="Muffin" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Muffin
+            </span>
+            <ul class="ingredients">
+              <li><em>Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Eggs</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Baking Powder</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="sweet">
+            <span class="food-name">
+              <img src="images/donuts.jpg" alt="Donuts" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Donuts
+            </span>
+            <ul class="ingredients">
+              <li><em>Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
 
       <div class="toggle-section">
         <button class="toggle-header">🍩 Sweet Treats ▸</button>
         <ul class="toggle-content">
-          <li class="suggestable" data-ingredients="oats, milk, banana, maple syrup">
-            <img src="images/oatmeal.jpg" alt="Oatmeal" class="food-thumb" />
-            <a href="recipes/oatmeal.html" class="recipe-link">Oatmeal</a>
-            <button class="bookmark-btn" data-recipe="Oatmeal">☆</button>
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/oatmeal.jpg" alt="Oatmeal" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span>
+              <a href="recipes/oatmeal.html" class="recipe-link">Oatmeal</a>
+
+            </span>
+            <ul class="ingredients">
+              <li><em>Oats</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Banana</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Maple Syrup</em><span class="tooltip"><button class="add-grocery" data-category="condiments">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
             <p class="match-result"></p>
           </li>
-          <li>Cake</li>
+
+          <li class="has-ingredients suggestable" data-tags="sweet,vegetarian">
+            <span class="food-name">
+              <img src="images/cake.jpg" alt="Cake" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Cake
+            </span>
+            <ul class="ingredients">
+              <li><em>Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Eggs</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Butter</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </section>
-    
-    
+
+
     <section id="lunch-dinner">
       <h2>Lunch and Dinner</h2>
 
       <div class="toggle-section">
         <button class="toggle-header">🍛 Hearty Mains ▸</button>
         <ul class="toggle-content">
-          <li><a href="recipes/chicken.html" class="recipe-link">Chicken</a> <button class="bookmark-btn" data-recipe="Chicken">☆</button></li>
-          <li><a href="recipes/lentils.html" class="recipe-link">Lentils</a> <button class="bookmark-btn" data-recipe="Lentils">☆</button></li>
-          <li>Dal Bhat</li>
-          <li>Spaghetti</li>
-          <li>Rice</li>
+          <li class="has-ingredients suggestable" data-tags="protein">
+            <span class="food-name">
+              <img src="images/chicken.jpg" alt="Chicken" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span>
+              <a href="recipes/chicken.html" class="recipe-link">Chicken</a>
+
+            </span>
+            <ul class="ingredients">
+              <li><em>Chicken</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Garlic</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Spices</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+            <p class="match-result"></p>
+          </li>
+
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein">
+            <span class="food-name">
+              <img src="images/lentils.jpg" alt="Lentils" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span>
+              <a href="recipes/lentils.html" class="recipe-link">Lentils</a>
+
+            </span>
+            <ul class="ingredients">
+              <li><em>Lentils</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Turmeric</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+            <p class="match-result"></p>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein">
+            <span class="food-name">
+              <img src="images/dalbhat.jpg" alt="Dal Bhat" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Dal Bhat
+            </span>
+            <ul class="ingredients">
+              <li><em>Rice</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Lentils</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Turmeric</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick">
+            <span class="food-name">
+              <img src="images/spaghetti.jpg" alt="Spaghetti" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Spaghetti
+            </span>
+            <ul class="ingredients">
+              <li><em>Spaghetti</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Tomato Sauce</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Garlic</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
 
       <div class="toggle-section">
         <button class="toggle-header">🥗 Vegetarian Dishes ▸</button>
         <ul class="toggle-content">
-          <li><a href="recipes/veggies.html" class="recipe-link">Vegetables</a> <button class="bookmark-btn" data-recipe="Vegetables">☆</button></li>
-          <li><a href="recipes/potatoes.html" class="recipe-link">Potatoes</a> <button class="bookmark-btn" data-recipe="Potatoes">☆</button></li>
-          <li>Palaak Paneer</li>
-          <li>Matar Paneer</li>
-          <li>Salad</li>
-          <li>Pakoda</li>
-          <li>Tofu</li>
-          <li>Soyabean</li>
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/vegetables.jpg" alt="Vegetables" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span>
+              <a href="recipes/veggies.html" class="recipe-link">Vegetables</a>
+
+            </span>
+            <ul class="ingredients">
+              <li><em>Mixed Vegetables</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Spices</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Oil</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/potatoes.jpg" alt="Potatoes" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span>
+              <a href="recipes/potatoes.html" class="recipe-link">Potatoes</a>
+
+            </span>
+            <ul class="ingredients">
+              <li><em>Potatoes</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Ghee or Oil</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+            <p class="match-result"></p>
+          </li>
+
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein">
+            <span class="food-name">
+              <img src="images/palakpaneer.jpg" alt="Palaak Paneer" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Palaak Paneer
+            </span>
+            <ul class="ingredients">
+              <li><em>Spinach</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Paneer</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Onion</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein">
+            <span class="food-name">
+              <img src="images/matarpaneer.jpg" alt="Matar Paneer" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Matar Paneer
+            </span>
+            <ul class="ingredients">
+              <li><em>Green Peas</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Paneer</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Tomato</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/salad.jpg" alt="Salad" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Salad
+            </span>
+            <ul class="ingredients">
+              <li><em>Lettuce</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Tomato</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Cucumber</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/pakoda.jpg" alt="Pakoda" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Pakoda
+            </span>
+            <ul class="ingredients">
+              <li><em>Besan (Chickpea Flour)</em><span class="tooltip"><button class="add-grocery"
+                    data-category="grains">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span>
+              </li>
+              <li><em>Onion</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Spices</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein">
+            <span class="food-name">
+              <img src="images/tofu.jpg" alt="Tofu" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Tofu
+            </span>
+            <ul class="ingredients">
+              <li><em>Tofu</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Soy Sauce</em><span class="tooltip"><button class="add-grocery" data-category="condiments">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Garlic</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein">
+            <span class="food-name">
+              <img src="images/soyabean.jpg" alt="Soyabean" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Soyabean
+            </span>
+            <ul class="ingredients">
+              <li><em>Soyabean Nuggets</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Spices</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Onion</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
 
       <div class="toggle-section">
         <button class="toggle-header">🍕 Pasta & Pizza ▸</button>
         <ul class="toggle-content">
-          <li>Alfredo Pasta</li>
-          <li>Mac n Cheese</li>
-          <li>Marinara Pasta</li>
-          <li>Pizza</li>
+          <li class="has-ingredients suggestable" data-tags="quick,vegetarian">
+            <span class="food-name">
+              <img src="images/alfredo.jpg" alt="Alfredo Pasta" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Alfredo Pasta
+            </span>
+            <ul class="ingredients">
+              <li><em>Pasta</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Heavy Cream</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Parmesan Cheese</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick,vegetarian">
+            <span class="food-name">
+              <img src="images/macncheese.jpg" alt="Mac n Cheese" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Mac n Cheese
+            </span>
+            <ul class="ingredients">
+              <li><em>Macaroni</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Cheese</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/marinara.jpg" alt="Marinara Pasta" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Marinara Pasta
+            </span>
+            <ul class="ingredients">
+              <li><em>Spaghetti</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Tomato Sauce</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Garlic</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick">
+            <span class="food-name">
+              <img src="images/pizza.jpg" alt="Pizza" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Pizza
+            </span>
+            <ul class="ingredients">
+              <li><em>Pizza Dough</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Tomato Sauce</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Cheese</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Veggies/Meat</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
 
       <div class="toggle-section">
         <button class="toggle-header">🍔 Western & Fast Food ▸</button>
         <ul class="toggle-content">
-          <li>Burger</li>
-          <li>Wrap/Sandwich</li>
-          <li>Burrito Bowl</li>
-          <li>Tacos</li>
-          <li>Fries</li>
+          <li class="has-ingredients suggestable" data-tags="protein">
+            <span class="food-name">
+              <img src="images/burger.jpg" alt="Burger" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Burger
+            </span>
+            <ul class="ingredients">
+              <li><em>Burger Bun</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Patty</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Lettuce</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Cheese</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick,protein">
+            <span class="food-name">
+              <img src="images/wrap.jpg" alt="Wrap/Sandwich" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Wrap/Sandwich
+            </span>
+            <ul class="ingredients">
+              <li><em>Tortilla or Bread</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Protein Filling (e.g., Chicken)</em><span class="tooltip"><button class="add-grocery"
+                    data-category="protein">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span>
+              </li>
+              <li><em>Veggies</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="protein">
+            <span class="food-name">
+              <img src="images/burrito.jpg" alt="Burrito Bowl" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Burrito Bowl
+            </span>
+            <ul class="ingredients">
+              <li><em>Rice</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Beans</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Corn</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick">
+            <span class="food-name">
+              <img src="images/tacos.jpg" alt="Tacos" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Tacos
+            </span>
+            <ul class="ingredients">
+              <li><em>Tortilla</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Beans</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Lettuce</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Cheese</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick,vegetarian">
+            <span class="food-name">
+              <img src="images/fries.jpg" alt="Fries" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Fries
+            </span>
+            <ul class="ingredients">
+              <li><em>Potatoes</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Oil</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
 
       <div class="toggle-section">
         <button class="toggle-header">🌮 Global Favorites ▸</button>
         <ul class="toggle-content">
-          <li>Chowmein</li>
-          <li>Thukpa</li>
-          <li>Samyang Noodles</li>
-          <li>Chauchau</li>
-          <li>Pho</li>
-          <li>Sushi</li>
-          <li>Falafal</li>
-          <li>Hummus and Naan</li>
-          <li>Airfried Chickpeas</li>
-          <li>Fish</li>
-          <li>Salmon</li>
-          <li>Corn</li>
+          <li class="has-ingredients suggestable" data-tags="quick">
+            <span class="food-name">
+              <img src="images/chowmein.jpg" alt="Chowmein" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Chowmein
+            </span>
+            <ul class="ingredients">
+              <li><em>Noodles</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Cabbage</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Carrots</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Soy Sauce</em><span class="tooltip"><button class="add-grocery" data-category="condiments">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein">
+            <span class="food-name">
+              <img src="images/thukpa.jpg" alt="Thukpa" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Thukpa
+            </span>
+            <ul class="ingredients">
+              <li><em>Noodles</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Vegetables</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Spices</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick,spicy">
+            <span class="food-name">
+              <img src="images/samyang.jpg" alt="Samyang Noodles" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Samyang Noodles
+            </span>
+            <ul class="ingredients">
+              <li><em>Samyang Pack</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Egg (optional)</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+          <li class="has-ingredients suggestable" data-tags="quick,vegetarian">
+            <span class="food-name">
+              <img src="images/chauchau.jpg" alt="Chauchau" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Chauchau
+            </span>
+            <ul class="ingredients">
+              <li><em>Instant Noodles</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Onion</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Tomato</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="protein,asian">
+            <span class="food-name">
+              <img src="images/pho.jpg" alt="Pho" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Pho
+            </span>
+            <ul class="ingredients">
+              <li><em>Rice Noodles</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Broth</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Protein (e.g., Beef or Tofu)</em><span class="tooltip"><button class="add-grocery"
+                    data-category="protein">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span>
+              </li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="protein">
+            <span class="food-name">
+              <img src="images/sushi.jpg" alt="Sushi" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Sushi
+            </span>
+            <ul class="ingredients">
+              <li><em>Sushi Rice</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Seaweed (Nori)</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Fish or Veggie Filling</em><span class="tooltip"><button class="add-grocery"
+                    data-category="protein">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span>
+              </li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein">
+            <span class="food-name">
+              <img src="images/falafel.jpg" alt="Falafel" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Falafel
+            </span>
+            <ul class="ingredients">
+              <li><em>Chickpeas</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Garlic</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Spices</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein,quick">
+            <span class="food-name">
+              <img src="images/hummusnaan.jpg" alt="Hummus and Naan" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Hummus and Naan
+            </span>
+            <ul class="ingredients">
+              <li><em>Hummus</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Naan Bread</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Olive Oil</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein,quick">
+            <span class="food-name">
+              <img src="images/chickpeas.jpg" alt="Airfried Chickpeas" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Airfried Chickpeas
+            </span>
+            <ul class="ingredients">
+              <li><em>Chickpeas</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Oil</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Spices</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="protein">
+            <span class="food-name">
+              <img src="images/fish.jpg" alt="Fish" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Fish
+            </span>
+            <ul class="ingredients">
+              <li><em>Fish Fillet</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Lemon</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+          <li class="has-ingredients suggestable" data-tags="protein">
+            <span class="food-name">
+              <img src="images/salmon.jpg" alt="Salmon" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Salmon
+            </span>
+            <ul class="ingredients">
+              <li><em>Salmon Fillet</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Lemon</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt & Pepper</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/corn.jpg" alt="Corn" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Corn
+            </span>
+            <ul class="ingredients">
+              <li><em>Sweet Corn</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Butter</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
 
       <div class="toggle-section">
         <button class="toggle-header">🍲 Nepali & South Asian Dishes ▸</button>
         <ul class="toggle-content">
-          <li>Bara</li>
-          <li>Choila</li>
-          <li>Chatpate</li>
-          <li>Pani Puri</li>
-          <li>Samosa</li>
-          <li>Ghundruk</li>
-          <li>Chuira</li>
-          <li>Sel</li>
-          <li>Haluwa</li>
-          <li>Malpuwa</li>
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein">
+            <span class="food-name">
+              <img src="images/bara.jpg" alt="Bara" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Bara
+            </span>
+            <ul class="ingredients">
+              <li><em>Black Lentils</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Ginger</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Garlic</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="protein">
+            <span class="food-name">
+              <img src="images/choila.jpg" alt="Choila" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Choila
+            </span>
+            <ul class="ingredients">
+              <li><em>Buff/Chicken</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Mustard Oil</em><span class="tooltip"><button class="add-grocery" data-category="condiments">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Garlic Paste</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/chatpate.jpg" alt="Chatpate" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Chatpate
+            </span>
+            <ul class="ingredients">
+              <li><em>Puffed Rice</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Potato</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Green Chili</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/panipuri.jpg" alt="Pani Puri" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Pani Puri
+            </span>
+            <ul class="ingredients">
+              <li><em>Semolina Shells</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Spicy Water</em><span class="tooltip"><button class="add-grocery" data-category="condiments">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Potato Mash</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/samosa.jpg" alt="Samosa" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Samosa
+            </span>
+            <ul class="ingredients">
+              <li><em>Flour (for dough)</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Potatoes</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Peas</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,fermented">
+            <span class="food-name">
+              <img src="images/ghundruk.jpg" alt="Ghundruk" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Ghundruk
+            </span>
+            <ul class="ingredients">
+              <li><em>Ghundruk</em><span class="tooltip"><button class="add-grocery" data-category="fermented">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Garlic</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/chuira.jpg" alt="Chuira" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Chuira
+            </span>
+            <ul class="ingredients">
+              <li><em>Beaten Rice</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/sel.jpg" alt="Sel" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Sel
+            </span>
+            <ul class="ingredients">
+              <li><em>Rice Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Water</em><span class="tooltip"><button class="add-grocery" data-category="other">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="sweet,vegetarian">
+            <span class="food-name">
+              <img src="images/haluwa.jpg" alt="Haluwa" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Haluwa
+            </span>
+            <ul class="ingredients">
+              <li><em>Sooji (Semolina)</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Ghee</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="sweet,vegetarian">
+            <span class="food-name">
+              <img src="images/malpuwa.jpg" alt="Malpuwa" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Malpuwa
+            </span>
+            <ul class="ingredients">
+              <li><em>Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Banana</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
     </section>
-    
+
     <section id="snacks">
       <h2>Snacks</h2>
-    
+
       <div class="toggle-section">
         <button class="toggle-header">🍹 Refreshing Drinks ▸</button>
         <ul class="toggle-content">
-          <li>Peanut Butter Banana Smoothie</li>
-          <li>Lassi</li>
-          <li>Banana Milk</li>
-          <li>Soda</li>
-          <li>Boba</li>
+          <li class="has-ingredients suggestable" data-tags="quick,vegetarian,protein">
+            <span class="food-name">
+              <img src="images/pbbanana.jpg" alt="Peanut Butter Banana Smoothie" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Peanut Butter Banana Smoothie
+            </span>
+            <ul class="ingredients">
+              <li><em>Banana</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Peanut Butter</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/lassi.jpg" alt="Lassi" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Lassi
+            </span>
+            <ul class="ingredients">
+              <li><em>Yogurt</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Cardamom</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="quick,vegetarian">
+            <span class="food-name">
+              <img src="images/bananamilk.jpg" alt="Banana Milk" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Banana Milk
+            </span>
+            <ul class="ingredients">
+              <li><em>Banana</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Honey (optional)</em><span class="tooltip"><button class="add-grocery"
+                    data-category="condiments">➕ Add</button><span class="tooltiptext">Add to Grocery List</span></span>
+              </li>
+            </ul>
+          </li>
+          <li class="has-ingredients suggestable" data-tags="quick,drink">
+            <span class="food-name">
+              <img src="images/soda.jpg" alt="Soda" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Soda
+            </span>
+            <ul class="ingredients">
+              <li><em>Carbonated Water</em><span class="tooltip"><button class="add-grocery" data-category="drinks">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Lemon (optional)</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="sweet,quick">
+            <span class="food-name">
+              <img src="images/boba.jpg" alt="Boba" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Boba
+            </span>
+            <ul class="ingredients">
+              <li><em>Tapioca Pearls</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Tea</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
-    
+
       <div class="toggle-section">
         <button class="toggle-header">🍓 Fresh & Healthy ▸</button>
         <ul class="toggle-content">
-          <li>Fruits</li>
-          <li>Cucumber</li>
-          <li>Carrots</li>
-          <li>Edamame</li>
-          <li>Nuts</li>
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/fruits.jpg" alt="Fruits" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Fruits
+            </span>
+            <ul class="ingredients">
+              <li><em>Banana</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Apple</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Grapes</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/cucumber.jpg" alt="Cucumber" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Cucumber
+            </span>
+            <ul class="ingredients">
+              <li><em>Cucumber</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt (optional)</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/carrots.jpg" alt="Carrots" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Carrots
+            </span>
+            <ul class="ingredients">
+              <li><em>Carrots</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein">
+            <span class="food-name">
+              <img src="images/edamame.jpg" alt="Edamame" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Edamame
+            </span>
+            <ul class="ingredients">
+              <li><em>Frozen Edamame</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,protein,quick">
+            <span class="food-name">
+              <img src="images/nuts.jpg" alt="Nuts" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Nuts
+            </span>
+            <ul class="ingredients">
+              <li><em>Almonds</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Cashews</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Walnuts</em><span class="tooltip"><button class="add-grocery" data-category="protein">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
         </ul>
       </div>
-    
+
       <div class="toggle-section">
         <button class="toggle-header">🍩 Sweet Treats ▸</button>
         <ul class="toggle-content">
-          <li>Ice Cream</li>
-          <li>Cake</li>
-          <li>Donuts</li>
-          <li>Muffin</li>
-          <li>Chia Pudding</li>
+          <li class="has-ingredients suggestable" data-tags="sweet">
+            <span class="food-name">
+              <img src="images/icecream.jpg" alt="Ice Cream" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Ice Cream
+            </span>
+            <ul class="ingredients">
+              <li><em>Heavy Cream</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Vanilla Extract</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="sweet,vegetarian">
+            <span class="food-name">
+              <img src="images/cake.jpg" alt="Cake" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Cake
+            </span>
+            <ul class="ingredients">
+              <li><em>Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Eggs</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Butter</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="sweet">
+            <span class="food-name">
+              <img src="images/donuts.jpg" alt="Donuts" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Donuts
+            </span>
+            <ul class="ingredients">
+              <li><em>Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/muffin.jpg" alt="Muffin" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Muffin
+            </span>
+            <ul class="ingredients">
+              <li><em>Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Sugar</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Eggs</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Baking Powder</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/chiapudding.jpg" alt="Chia Pudding" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Chia Pudding
+            </span>
+            <ul class="ingredients">
+              <li><em>Chia Seeds</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Milk</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Maple Syrup</em><span class="tooltip"><button class="add-grocery" data-category="condiments">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
         </ul>
       </div>
-    
+
       <div class="toggle-section">
         <button class="toggle-header">🍟 Salty & Crunchy ▸</button>
         <ul class="toggle-content">
-          <li>Chips</li>
-          <li>Pop Corn</li>
-          <li>Gwar Mari</li>
+          <li class="has-ingredients suggestable" data-tags="quick">
+            <span class="food-name">
+              <img src="images/chips.jpg" alt="Chips" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Chips
+            </span>
+            <ul class="ingredients">
+              <li><em>Potatoes</em><span class="tooltip"><button class="add-grocery" data-category="produce">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Oil</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian,quick">
+            <span class="food-name">
+              <img src="images/popcorn.jpg" alt="Popcorn" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Popcorn
+            </span>
+            <ul class="ingredients">
+              <li><em>Popcorn Kernels</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Oil or Butter</em><span class="tooltip"><button class="add-grocery" data-category="dairy">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
+
+          <li class="has-ingredients suggestable" data-tags="vegetarian">
+            <span class="food-name">
+              <img src="images/gwarmari.jpg" alt="Gwar Mari" class="food-thumb" />
+              <span class="dropdown-icon">▶️</span> Gwar Mari
+            </span>
+            <ul class="ingredients">
+              <li><em>All-Purpose Flour</em><span class="tooltip"><button class="add-grocery" data-category="grains">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Yeast</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Salt</em><span class="tooltip"><button class="add-grocery" data-category="spices">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+              <li><em>Oil</em><span class="tooltip"><button class="add-grocery" data-category="pantry">➕
+                    Add</button><span class="tooltiptext">Add to Grocery List</span></span></li>
+            </ul>
+          </li>
         </ul>
       </div>
-    </section>   
+    </section>
   </main>
 
   <section id="custom-grocery">
@@ -267,7 +1382,7 @@
       <button type="submit">Add Item</button>
     </form>
   </section>
-  
+
 
   <section id="grocery-list">
     <h2>My Grocery List 🛒</h2>
@@ -277,16 +1392,12 @@
     <button id="exportList">🧾 Export Grocery List</button>
   </section>
 
-  <section id="recent-recipes">
-    <h2>Recently Viewed Recipes 📘</h2>
-    <ul id="recentList"></ul>
-  </section>
-
   <footer>
     <p>Copyright © Sanam</p>
   </footer>
-
-  <script src="script.js"></script>
   <div id="toast" class="toast"></div>
+  <script src="script.js"></script>
+
 </body>
+
 </html>

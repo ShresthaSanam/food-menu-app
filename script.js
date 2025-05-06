@@ -23,8 +23,373 @@ const meals = {
     { name: "eggs", qty: 2 },
     { name: "salt", qty: 1 },
     { name: "oil", qty: 1 }
-  ]
+  ],
+  "Roti": [
+    { name: "wheat flour", qty: 1 },
+    { name: "water", qty: 1 },
+    { name: "oil", qty: 1 }
+  ],
+  "Avocado": [
+    { name: "avocado", qty: 1 },
+    { name: "salt", qty: 1 },
+    { name: "lemon", qty: 1 }
+  ],
+  "Waffles": [
+    { name: "flour", qty: 1 },
+    { name: "milk", qty: 1 },
+    { name: "eggs", qty: 2 },
+    { name: "butter", qty: 1 }
+  ],
+  "Tea": [
+    { name: "tea leaves", qty: 1 },
+    { name: "milk", qty: 1 },
+    { name: "sugar", qty: 1 }
+  ],
+  "Coffee": [
+    { name: "ground coffee", qty: 1 },
+    { name: "milk", qty: 1 },
+    { name: "sugar", qty: 1 }
+  ],
+  "Banana Milk": [
+    { name: "banana", qty: 1 },
+    { name: "milk", qty: 1 },
+    { name: "honey", qty: 1 }
+  ],
+  "Chia Pudding": [
+    { name: "chia seeds", qty: 1 },
+    { name: "milk", qty: 1 },
+    { name: "maple syrup", qty: 1 }
+  ],
+  "PB Jelly Sandwich": [
+    { name: "bread", qty: 2 },
+    { name: "peanut butter", qty: 1 },
+    { name: "jam", qty: 1 }
+  ],
+  "Bagels": [
+    { name: "bagel", qty: 1 },
+    { name: "cream cheese", qty: 1 }
+  ],
+  "Muffin": [
+    { name: "flour", qty: 1 },
+    { name: "sugar", qty: 1 },
+    { name: "eggs", qty: 1 },
+    { name: "baking powder", qty: 1 }
+  ],
+  "Donuts": [
+    { name: "flour", qty: 1 },
+    { name: "milk", qty: 1 },
+    { name: "sugar", qty: 1 }
+  ],
+  "Cake": [
+    { name: "flour", qty: 1 },
+    { name: "sugar", qty: 1 },
+    { name: "eggs", qty: 2 },
+    { name: "butter", qty: 1 }
+  ],
+  // Add this inside your meals object
+
+"Chicken": [
+  { name: "chicken", qty: 1 },
+  { name: "garlic", qty: 1 },
+  { name: "spices", qty: 1 }
+],
+"Lentils": [
+  { name: "lentils", qty: 1 },
+  { name: "turmeric", qty: 1 },
+  { name: "salt", qty: 1 }
+],
+"Dal Bhat": [
+  { name: "rice", qty: 1 },
+  { name: "lentils", qty: 1 },
+  { name: "turmeric", qty: 1 },
+  { name: "salt", qty: 1 }
+],
+"Spaghetti": [
+  { name: "spaghetti", qty: 1 },
+  { name: "tomato sauce", qty: 1 },
+  { name: "garlic", qty: 1 }
+],
+"Vegetables": [
+  { name: "mixed vegetables", qty: 1 },
+  { name: "spices", qty: 1 },
+  { name: "oil", qty: 1 }
+],
+"Potatoes": [
+  { name: "potatoes", qty: 1 },
+  { name: "salt", qty: 1 },
+  { name: "ghee", qty: 1 }
+],
+"Palaak Paneer": [
+  { name: "spinach", qty: 1 },
+  { name: "paneer", qty: 1 },
+  { name: "onion", qty: 1 }
+],
+"Matar Paneer": [
+  { name: "green peas", qty: 1 },
+  { name: "paneer", qty: 1 },
+  { name: "tomato", qty: 1 }
+],
+"Salad": [
+  { name: "lettuce", qty: 1 },
+  { name: "tomato", qty: 1 },
+  { name: "cucumber", qty: 1 }
+],
+"Pakoda": [
+  { name: "besan", qty: 1 },
+  { name: "onion", qty: 1 },
+  { name: "spices", qty: 1 }
+],
+"Tofu": [
+  { name: "tofu", qty: 1 },
+  { name: "soy sauce", qty: 1 },
+  { name: "garlic", qty: 1 }
+],
+"Soyabean": [
+  { name: "soyabean nuggets", qty: 1 },
+  { name: "spices", qty: 1 },
+  { name: "onion", qty: 1 }
+],
+"Alfredo Pasta": [
+  { name: "pasta", qty: 1 },
+  { name: "heavy cream", qty: 1 },
+  { name: "parmesan cheese", qty: 1 }
+],
+"Mac n Cheese": [
+  { name: "macaroni", qty: 1 },
+  { name: "cheese", qty: 1 },
+  { name: "milk", qty: 1 }
+],
+"Marinara Pasta": [
+  { name: "spaghetti", qty: 1 },
+  { name: "tomato sauce", qty: 1 },
+  { name: "garlic", qty: 1 }
+],
+"Pizza": [
+  { name: "pizza dough", qty: 1 },
+  { name: "tomato sauce", qty: 1 },
+  { name: "cheese", qty: 1 },
+  { name: "veggies", qty: 1 }
+],
+"Burger": [
+  { name: "burger bun", qty: 1 },
+  { name: "patty", qty: 1 },
+  { name: "lettuce", qty: 1 },
+  { name: "cheese", qty: 1 }
+],
+"Wrap/Sandwich": [
+  { name: "tortilla", qty: 1 },
+  { name: "protein filling", qty: 1 },
+  { name: "veggies", qty: 1 }
+],
+"Burrito Bowl": [
+  { name: "rice", qty: 1 },
+  { name: "beans", qty: 1 },
+  { name: "corn", qty: 1 }
+],
+"Tacos": [
+  { name: "tortilla", qty: 1 },
+  { name: "beans", qty: 1 },
+  { name: "lettuce", qty: 1 },
+  { name: "cheese", qty: 1 }
+],
+"Fries": [
+  { name: "potatoes", qty: 1 },
+  { name: "oil", qty: 1 },
+  { name: "salt", qty: 1 }
+],
+"Chowmein": [
+  { name: "noodles", qty: 1 },
+  { name: "cabbage", qty: 1 },
+  { name: "carrots", qty: 1 },
+  { name: "soy sauce", qty: 1 }
+],
+"Thukpa": [
+  { name: "noodles", qty: 1 },
+  { name: "vegetables", qty: 1 },
+  { name: "spices", qty: 1 }
+],
+"Samyang Noodles": [
+  { name: "samyang pack", qty: 1 },
+  { name: "egg", qty: 1 }
+],
+"Chauchau": [
+  { name: "instant noodles", qty: 1 },
+  { name: "onion", qty: 1 },
+  { name: "tomato", qty: 1 }
+],
+"Pho": [
+  { name: "rice noodles", qty: 1 },
+  { name: "broth", qty: 1 },
+  { name: "protein", qty: 1 }
+],
+"Sushi": [
+  { name: "sushi rice", qty: 1 },
+  { name: "seaweed", qty: 1 },
+  { name: "fish", qty: 1 }
+],
+"Falafel": [
+  { name: "chickpeas", qty: 1 },
+  { name: "garlic", qty: 1 },
+  { name: "spices", qty: 1 }
+],
+"Hummus and Naan": [
+  { name: "hummus", qty: 1 },
+  { name: "naan bread", qty: 1 },
+  { name: "olive oil", qty: 1 }
+],
+"Airfried Chickpeas": [
+  { name: "chickpeas", qty: 1 },
+  { name: "oil", qty: 1 },
+  { name: "spices", qty: 1 }
+],
+"Fish": [
+  { name: "fish fillet", qty: 1 },
+  { name: "lemon", qty: 1 },
+  { name: "salt", qty: 1 }
+],
+"Salmon": [
+  { name: "salmon fillet", qty: 1 },
+  { name: "lemon", qty: 1 },
+  { name: "salt & pepper", qty: 1 }
+],
+"Corn": [
+  { name: "sweet corn", qty: 1 },
+  { name: "butter", qty: 1 }
+],
+"Bara": [
+  { name: "black lentils", qty: 1 },
+  { name: "ginger", qty: 1 },
+  { name: "garlic", qty: 1 }
+],
+"Choila": [
+  { name: "buff", qty: 1 },
+  { name: "mustard oil", qty: 1 },
+  { name: "garlic paste", qty: 1 }
+],
+"Chatpate": [
+  { name: "puffed rice", qty: 1 },
+  { name: "potato", qty: 1 },
+  { name: "green chili", qty: 1 }
+],
+"Pani Puri": [
+  { name: "semolina shells", qty: 1 },
+  { name: "spicy water", qty: 1 },
+  { name: "potato mash", qty: 1 }
+],
+"Samosa": [
+  { name: "flour", qty: 1 },
+  { name: "potatoes", qty: 1 },
+  { name: "peas", qty: 1 }
+],
+"Ghundruk": [
+  { name: "ghundruk", qty: 1 },
+  { name: "garlic", qty: 1 }
+],
+"Chuira": [
+  { name: "beaten rice", qty: 1 },
+  { name: "sugar", qty: 1 }
+],
+"Sel": [
+  { name: "rice flour", qty: 1 },
+  { name: "water", qty: 1 },
+  { name: "sugar", qty: 1 }
+],
+"Haluwa": [
+  { name: "sooji", qty: 1 },
+  { name: "ghee", qty: 1 },
+  { name: "sugar", qty: 1 }
+],
+"Malpuwa": [
+  { name: "flour", qty: 1 },
+  { name: "banana", qty: 1 },
+  { name: "sugar", qty: 1 }
+],
+"Peanut Butter Banana Smoothie": [
+  { name: "banana", qty: 1 },
+  { name: "milk", qty: 1 },
+  { name: "peanut butter", qty: 1 }
+],
+"Lassi": [
+  { name: "yogurt", qty: 1 },
+  { name: "sugar", qty: 1 },
+  { name: "cardamom", qty: 1 }
+],
+"Banana Milk": [
+  { name: "banana", qty: 1 },
+  { name: "milk", qty: 1 },
+  { name: "honey", qty: 1 }
+],
+"Soda": [
+  { name: "carbonated water", qty: 1 },
+  { name: "sugar", qty: 1 },
+  { name: "lemon", qty: 1 }
+],
+"Boba": [
+  { name: "tapioca pearls", qty: 1 },
+  { name: "tea", qty: 1 },
+  { name: "milk", qty: 1 }
+],
+"Fruits": [
+  { name: "banana", qty: 1 },
+  { name: "apple", qty: 1 },
+  { name: "grapes", qty: 1 }
+],
+"Cucumber": [
+  { name: "cucumber", qty: 1 },
+  { name: "salt", qty: 1 }
+],
+"Carrots": [
+  { name: "carrots", qty: 1 }
+],
+"Edamame": [
+  { name: "frozen edamame", qty: 1 },
+  { name: "salt", qty: 1 }
+],
+"Nuts": [
+  { name: "almonds", qty: 1 },
+  { name: "cashews", qty: 1 },
+  { name: "walnuts", qty: 1 }
+],
+"Ice Cream": [
+  { name: "heavy cream", qty: 1 },
+  { name: "sugar", qty: 1 },
+  { name: "vanilla extract", qty: 1 }
+],
+"Cake": [
+  { name: "flour", qty: 1 },
+  { name: "sugar", qty: 1 },
+  { name: "eggs", qty: 1 },
+  { name: "butter", qty: 1 }
+],
+"Donuts": [
+  { name: "flour", qty: 1 },
+  { name: "milk", qty: 1 },
+  { name: "sugar", qty: 1 }
+],
+"Muffin": [
+  { name: "flour", qty: 1 },
+  { name: "sugar", qty: 1 },
+  { name: "eggs", qty: 1 },
+  { name: "baking powder", qty: 1 }
+],
+"Chia Pudding": [
+  { name: "chia seeds", qty: 1 },
+  { name: "milk", qty: 1 },
+  { name: "maple syrup", qty: 1 }
+],
+"Chips": [
+  { name: "potatoes", qty: 1 },
+  { name: "salt", qty: 1 },
+  { name: "oil", qty: 1 }
+],
+"Popcorn": [
+  { name: "popcorn kernels", qty: 1 },
+  { name: "oil", qty: 1 },
+  { name: "salt", qty: 1 }
+]
+
 };
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("searchInput");
@@ -261,41 +626,44 @@ function loadGroceryList() {
 function suggestMealsFromInventory() {
   const inventory = JSON.parse(localStorage.getItem("myInventoryList")) || [];
   const container = document.getElementById("smartSuggestionList") || document.getElementById("suggestedMeals");
-  const showOnlyCookable = document.getElementById("onlyCookableToggle")?.checked;
   if (!container) return;
 
   const results = [];
 
   Object.entries(meals).forEach(([mealName, ingredients]) => {
     let hasAll = true;
-    const missingItems = [];
-
+  
+    const availableIngredients = [];
+    const missingIngredients = [];
+  
     ingredients.forEach(({ name, qty }) => {
       const match = inventory.find(i => i.name === name.toLowerCase());
-      if (!match || match.quantity < qty) {
+      if (match && match.quantity >= qty) {
+        availableIngredients.push(name);
+      } else {
         hasAll = false;
-        const shortBy = match ? qty - match.quantity : qty;
-        missingItems.push({ name, qty: shortBy });
+        missingIngredients.push(name);
       }
     });
-
-    if (showOnlyCookable && !hasAll) return; // ✅ Skip if user only wants cookable
-
-    const link = `recipes/${mealName.toLowerCase().replace(/\s+/g, "")}.html`;
-    const anchor = `<a href="${link}" target="_blank">${mealName}</a>`;
-
-    if (hasAll) {
-      results.push(`<li style="color: green;">✅ ${anchor}</li>`);
-    } else {
-      const missingText = missingItems.map(item => `${item.name} (${item.qty})`).join(", ");
-      const btn = `<button class="add-missing-btn" data-meal="${mealName}">🛒 Add Missing to Grocery</button>`;
-      const color = missingItems.length <= 2 ? "orange" : "red";
-      results.push(`<li style="color: ${color};">
-        ${missingItems.length <= 2 ? "🟡" : "🔴"} ${anchor} — Missing: ${missingText}
-        <br />${btn}
-      </li>`);
+  
+    if (!hasAll) return; // Still keep only fully cookable meals showing
+  
+    // Build tooltip
+    let tooltipText = "";
+    if (availableIngredients.length) {
+      tooltipText += `Available: ${availableIngredients.join(", ")}\n`;
     }
+    if (missingIngredients.length) {
+      tooltipText += `Missing: ${missingIngredients.join(", ")}`;
+    }
+  
+    const link = `recipes/${mealName.toLowerCase().replace(/\s+/g, "")}.html`;
+    const anchor = `<a href="${link}" target="_blank" data-tooltip="${tooltipText}">${mealName}</a>`;
+
+  
+    results.push(`<li style="color: green;">✅ ${anchor}</li>`);
   });
+  
 
   container.innerHTML = results.length
     ? results.join("")
@@ -578,74 +946,6 @@ if (exportBtn) {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("smartSuggestionList");
-  if (!container) return;
-
-  const inventory = JSON.parse(localStorage.getItem("myInventoryList")) || [];
-  const results = [];
-
-  Object.entries(meals).forEach(([mealName, ingredients]) => {
-    let hasAll = true;
-    const missingItems = [];
-
-    ingredients.forEach(({ name, qty }) => {
-      const match = inventory.find((i) => i.name === name.toLowerCase());
-      if (!match || match.quantity < qty) {
-        hasAll = false;
-        const shortBy = match ? qty - match.quantity : qty;
-        missingItems.push({ name, qty: shortBy });
-      }
-    });
-
-    const link = `recipes/${mealName.toLowerCase().replace(/\s+/g, "")}.html`;
-    const anchor = `<a href="${link}" target="_blank">${mealName}</a>`;
-
-    if (hasAll) {
-      results.push(`<li style="color: green;">✅ ${anchor}</li>`);
-    } else {
-      const missingText = missingItems
-        .map((item) => `${item.name} (${item.qty})`)
-        .join(", ");
-      const btn = `<button class="add-missing-btn" data-meal="${mealName}">🛒 Add Missing to Grocery</button>`;
-      const color = missingItems.length <= 2 ? "orange" : "red";
-      results.push(`<li style="color: ${color};">
-        ${missingItems.length <= 2 ? "🟡" : "🔴"} ${anchor} — Missing: ${missingText}
-        <br />${btn}
-      </li>`);
-    }
-  });
-
-  container.innerHTML = results.length
-    ? results.join("")
-    : "<li>No suggestions yet. Add items to inventory.</li>";
-
-  // 🔗 Attach button click handlers
-  document.querySelectorAll(".add-missing-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const meal = btn.getAttribute("data-meal");
-      const missing = [];
-
-      const ingredients = meals[meal];
-      const inventory = JSON.parse(localStorage.getItem("myInventoryList")) || [];
-      ingredients.forEach(({ name, qty }) => {
-        const match = inventory.find((i) => i.name === name.toLowerCase());
-        if (!match || match.quantity < qty) {
-          const shortBy = match ? qty - match.quantity : qty;
-          missing.push({ name, qty: shortBy });
-        }
-      });
-
-      // Add to grocery list
-      missing.forEach(({ name }) => {
-        addToGroceryList(name); // uses default category
-      });
-
-      showToast(`🛒 Added missing items for "${meal}"`);
-    });
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("toggleSmartSuggestions");
   const smartBox = document.getElementById("smart-suggestions-box");
 
@@ -694,40 +994,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const bookmarkButtons = document.querySelectorAll(".bookmark-btn");
-  const savedBookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
-
-  bookmarkButtons.forEach((btn) => {
-    const recipe = btn.getAttribute("data-recipe");
-
-    // Show filled star if already bookmarked
-    if (savedBookmarks.includes(recipe)) {
-      btn.textContent = "⭐";
-    }
-
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation(); // prevents unwanted bubbling like expanding dropdown
-      let bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
-
-      if (bookmarks.includes(recipe)) {
-        // Remove bookmark
-        bookmarks = bookmarks.filter((r) => r !== recipe);
-        btn.textContent = "☆";
-        localStorage.setItem("bookmarkedRecipes", JSON.stringify(bookmarks));
-        showToast("❌ Recipe removed from bookmarks");
-      } else {
-        // Add bookmark
-        bookmarks.push(recipe);
-        btn.textContent = "⭐";
-        localStorage.setItem("bookmarkedRecipes", JSON.stringify(bookmarks));
-        showToast("✅ Recipe bookmarked!");
-      }
-    });
-  });
-});
-
-
 function showToast(message) {
   const toast = document.getElementById("toast");
   if (!toast) return;
@@ -740,3 +1006,169 @@ function showToast(message) {
   }, 3000);
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const tagFilter = document.getElementById("tagFilter");
+  if (!tagFilter) return;
+
+  tagFilter.addEventListener("change", () => {
+    const selectedTag = tagFilter.value.toLowerCase(); // normalize
+    const recipes = document.querySelectorAll(".suggestable");
+  
+    recipes.forEach((recipe) => {
+      const tags = (recipe.getAttribute("data-tags") || "").toLowerCase();
+      const tagList = tags.split(",").map((t) => t.trim());
+  
+      if (!selectedTag || tagList.includes(selectedTag)) {
+        recipe.style.display = "";
+      } else {
+        recipe.style.display = "none";
+      }
+    });
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".has-ingredients").forEach((item) => {
+    const nameSpan = item.querySelector(".food-name");
+    if (!nameSpan) return;
+
+    // Avoid duplicates
+    if (nameSpan.querySelector(".bookmark-btn")) return;
+
+    // Get raw name from text or link
+    const recipeLink = nameSpan.querySelector("a.recipe-link");
+    const rawName = recipeLink?.textContent.trim() || nameSpan.textContent.trim();
+    const cleanName = rawName.replace(/▶️/, "").trim();
+
+    // Create recipe link
+    const recipeAnchor = document.createElement("a");
+    recipeAnchor.className = "recipe-link";
+    recipeAnchor.href = `recipes/${cleanName.toLowerCase().replace(/\s+/g, "")}.html`;
+    recipeAnchor.textContent = cleanName;
+
+    // Create bookmark button
+    const btn = document.createElement("button");
+    btn.className = "bookmark-btn";
+    btn.dataset.recipe = cleanName;
+    btn.textContent = "☆";
+
+    // Load saved bookmarks from localStorage
+const savedBookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+btn.textContent = savedBookmarks.includes(cleanName) ? "⭐" : "☆";
+
+// Add click event
+btn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  let bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+
+  if (bookmarks.includes(cleanName)) {
+    bookmarks = bookmarks.filter((r) => r !== cleanName);
+    btn.textContent = "☆";
+    showToast(`❌ Removed "${cleanName}" from bookmarks`);
+  } else {
+    bookmarks.push(cleanName);
+    btn.textContent = "⭐";
+    showToast(`✅ Bookmarked "${cleanName}"`);
+  }
+
+  localStorage.setItem("bookmarkedRecipes", JSON.stringify(bookmarks));
+});
+
+
+    // Clear old text and re-append
+    nameSpan.innerHTML = nameSpan.querySelector("img")?.outerHTML || "";
+    nameSpan.appendChild(document.createTextNode(" "));
+    const icon = document.createElement("span");
+    icon.className = "dropdown-icon";
+    icon.textContent = "▶️";
+    nameSpan.appendChild(icon);
+    nameSpan.appendChild(recipeAnchor);
+    nameSpan.appendChild(btn);
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const inventory = JSON.parse(localStorage.getItem("myInventoryList")) || [];
+
+  document.querySelectorAll(".food-name").forEach((nameSpan) => {
+    // 🛠 Instead of raw textContent, find <a> tag or use plain text
+    const recipeLink = nameSpan.querySelector("a.recipe-link");
+    const rawName = recipeLink ? recipeLink.textContent.trim() : nameSpan.childNodes[nameSpan.childNodes.length - 1].textContent.trim();
+    const mealName = rawName.replace("▶️", "").trim(); // Clean "▶️" if left
+
+    const ingredients = meals[mealName];
+    if (!ingredients) return; // Skip if meal not in meals object
+
+    const availableIngredients = [];
+    const missingIngredients = [];
+
+    ingredients.forEach(({ name, qty }) => {
+      const match = inventory.find(i => i.name === name.toLowerCase());
+      if (match && match.quantity >= qty) {
+        availableIngredients.push(name);
+      } else {
+        missingIngredients.push(name);
+      }
+    });
+
+    let tooltipText = "";
+    if (availableIngredients.length) {
+      tooltipText += `Available: ${availableIngredients.join(", ")}\n`;
+    }
+    if (missingIngredients.length) {
+      tooltipText += `Missing: ${missingIngredients.join(", ")}`;
+    }
+
+    console.log('Tooltip set for:', mealName, tooltipText); // 🛠 Debug log
+    if (recipeLink) recipeLink.setAttribute("data-tooltip", tooltipText);
+
+
+  });
+});
+
+// === TOOLTIP FOR FOOD NAMES ===
+document.addEventListener("DOMContentLoaded", () => {
+  const inventory = JSON.parse(localStorage.getItem("myInventoryList")) || [];
+
+  document.querySelectorAll(".food-name").forEach((nameSpan) => {
+    const rawName = nameSpan.textContent.replace(/▶️/, "").trim();
+    const mealName = rawName;
+
+    const ingredients = meals[mealName];
+    if (!ingredients) return; // if no meal data, skip
+
+    const available = [];
+    const missing = [];
+
+    ingredients.forEach(({ name, qty }) => {
+      const match = inventory.find(i => i.name === name.toLowerCase());
+      if (match && match.quantity >= qty) {
+        available.push(name);
+      } else {
+        missing.push(name);
+      }
+    });
+
+    // Remove old tooltip if any
+    nameSpan.querySelector(".tooltiptext")?.remove();
+
+    // Create tooltip box
+    const tooltipBox = document.createElement("div");
+    tooltipBox.className = "tooltiptext";
+    tooltipBox.style.textAlign = "left";  // ✅ Align text to left
+    tooltipBox.style.minWidth = "200px";  // ✅ Make tooltip wider so text wraps properly
+    tooltipBox.innerHTML = `
+      <div style="color: #27ae60; font-weight: bold;">✅ Available</div>
+      <div style="margin-bottom: 8px;">${available.length ? available.join(", ") : "None"}</div>
+      <div style="color: #e74c3c; font-weight: bold;">❌ Missing</div>
+      <div>${missing.length ? missing.join(", ") : "None"}</div>
+    `;
+
+    // Make sure parent has class 'tooltip'
+    nameSpan.classList.add("tooltip");
+
+    nameSpan.appendChild(tooltipBox);
+  });
+});
