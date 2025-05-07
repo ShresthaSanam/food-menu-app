@@ -24,6 +24,12 @@ const meals = {
     { name: "salt", qty: 1 },
     { name: "oil", qty: 1 }
   ],
+  "Gwar Mari": [
+    { name: "all-purpose flour", qty: 1 },
+    { name: "yeast", qty: 1 },
+    { name: "salt", qty: 1 },
+    { name: "oil", qty: 1 }
+  ],  
   "Roti": [
     { name: "wheat flour", qty: 1 },
     { name: "water", qty: 1 },
@@ -314,11 +320,7 @@ const meals = {
   { name: "sugar", qty: 1 },
   { name: "cardamom", qty: 1 }
 ],
-"Banana Milk": [
-  { name: "banana", qty: 1 },
-  { name: "milk", qty: 1 },
-  { name: "honey", qty: 1 }
-],
+
 "Soda": [
   { name: "carbonated water", qty: 1 },
   { name: "sugar", qty: 1 },
@@ -355,28 +357,6 @@ const meals = {
   { name: "sugar", qty: 1 },
   { name: "vanilla extract", qty: 1 }
 ],
-"Cake": [
-  { name: "flour", qty: 1 },
-  { name: "sugar", qty: 1 },
-  { name: "eggs", qty: 1 },
-  { name: "butter", qty: 1 }
-],
-"Donuts": [
-  { name: "flour", qty: 1 },
-  { name: "milk", qty: 1 },
-  { name: "sugar", qty: 1 }
-],
-"Muffin": [
-  { name: "flour", qty: 1 },
-  { name: "sugar", qty: 1 },
-  { name: "eggs", qty: 1 },
-  { name: "baking powder", qty: 1 }
-],
-"Chia Pudding": [
-  { name: "chia seeds", qty: 1 },
-  { name: "milk", qty: 1 },
-  { name: "maple syrup", qty: 1 }
-],
 "Chips": [
   { name: "potatoes", qty: 1 },
   { name: "salt", qty: 1 },
@@ -389,8 +369,6 @@ const meals = {
 ]
 
 };
-
-
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -433,6 +411,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("groceryItems").innerHTML = "";
       localStorage.removeItem("groceryList");
       suggestMealsFromInventory();
+      
     });
   }
 
@@ -446,6 +425,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       saveGroceryList();
       suggestMealsFromInventory();
+      
     });
   }
 
@@ -542,6 +522,7 @@ function addToGroceryList(itemName, category = "other") {
           input.replaceWith(span);
           saveGroceryList();
           suggestMealsFromInventory();
+       
         }
       }
     });
@@ -571,6 +552,7 @@ deleteBtn.addEventListener("click", () => {
 
   saveGroceryList();
   suggestMealsFromInventory();
+  
 });
 
   
@@ -583,6 +565,7 @@ deleteBtn.addEventListener("click", () => {
   sortGrocerySection(categorySection);
   saveGroceryList();
   suggestMealsFromInventory();
+  
 }
 
 
@@ -620,6 +603,7 @@ function loadGroceryList() {
   });
 
   suggestMealsFromInventory();
+
   document.querySelectorAll("#groceryItems ul").forEach((section) => {
     sortGrocerySection(section);
   });
@@ -703,6 +687,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (toggle) {
     toggle.addEventListener("change", () => {
       suggestMealsFromInventory();
+      
     });
   }
 });
@@ -907,6 +892,7 @@ if (exportBtn) {
     
       // ✅ Add this line to update suggestions
       suggestMealsFromInventory();
+      
     }
     
     addBtn.addEventListener("click", () => {
@@ -1181,5 +1167,48 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("smartSuggestionList")) {
     suggestMealsFromInventory();
+   
   }
 });
+
+// ✅ Show visible available/missing info under each food item
+// document.addEventListener("DOMContentLoaded", () => {
+//   const inventory = JSON.parse(localStorage.getItem("myInventoryList")) || [];
+
+//   document.querySelectorAll(".food-name").forEach((nameSpan) => {
+//     const recipeLink = nameSpan.querySelector("a.recipe-link");
+//     const rawName = recipeLink ? recipeLink.textContent.trim() : nameSpan.textContent.trim();
+//     const mealName = rawName.replace("▶️", "").trim();
+
+//     const ingredients = meals[mealName];
+//     if (!ingredients) return;
+
+//     const available = [];
+//     const missing = [];
+
+//     ingredients.forEach(({ name, qty }) => {
+//       const match = inventory.find((i) => i.name === name.toLowerCase());
+//       if (match && match.quantity >= qty) {
+//         available.push(name);
+//       } else {
+//         missing.push(name);
+//       }
+//     });
+
+//     // Avoid duplicate inserts
+//     if (nameSpan.nextElementSibling?.classList?.contains("inventory-match-info")) return;
+
+//     const matchDiv = document.createElement("div");
+//     matchDiv.className = "inventory-match-info";
+//     matchDiv.style.fontSize = "0.9em";
+//     matchDiv.style.marginTop = "4px";
+
+//     matchDiv.innerHTML = `
+//       <div style="color: green;">✅ Available: ${available.length ? available.join(", ") : "None"}</div>
+//       <div style="color: red;">❌ Missing: ${missing.length ? missing.join(", ") : "None"}</div>
+//     `;
+
+//     nameSpan.parentNode.insertBefore(matchDiv, nameSpan.nextSibling);
+//   });
+// });
+
