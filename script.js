@@ -391,6 +391,8 @@ const meals = {
 };
 
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("searchInput");
   if (searchInput) {
@@ -791,6 +793,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === INVENTORY WITH QUANTITY + UNIT ===
 document.addEventListener("DOMContentLoaded", () => {
+
+
   const input = document.getElementById("inventory-input");
   const qtyInput = document.getElementById("inventory-quantity");
   const unitInput = document.getElementById("inventory-unit");
@@ -1171,4 +1175,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     nameSpan.appendChild(tooltipBox);
   });
+});
+
+// ✅ Run Smart Suggestions if on homepage
+document.addEventListener("DOMContentLoaded", () => {
+  if (document.getElementById("smartSuggestionList")) {
+    suggestMealsFromInventory();
+  }
 });
